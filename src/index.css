@@ -1,0 +1,331 @@
+:root {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  background-color: hsl(0, 0%, 9%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "Bastrad";
+  src: url(/fonts/Bastrad.ttf);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border: 1px solid #000000;
+  margin-top: 20px;
+}
+
+.title {
+  font-family: "Bastrad";
+  font-size: 6rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  margin-top: 0;
+  color: #660000;
+  padding: 0 50px;
+}
+
+.todo-item {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #282828;
+  margin: 10px 0;
+  background-color: #f9f9f9;
+  width: 700px;
+  position: relative;
+}
+
+.todo-text {
+  flex: 1;
+  margin-right: 10px;
+  padding: 0 10px;
+  overflow-wrap: break-word;
+  max-width: 300px;
+}
+
+.todo-details {
+  display: flex;
+  flex-direction: column;
+}
+.todo-severity {
+  color: #660000;
+  font-weight: 500;
+  display: block;
+}
+
+.todo-time {
+  color: #6c757d;
+  margin-top: 5px;
+  display: block;
+}
+
+.newlabel {
+  margin: 10px;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 500;
+  border: 1px solid rgb(0, 0, 0);
+  font-size: 1em;
+  padding: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.newlabel:hover {
+  color: #660000;
+  background-color: #f5f5f5;
+}
+
+.newlabel.clicked {
+  background-color: #660000;
+  color: #fff;
+  border-color: #660000;
+}
+
+.newlabel:active {
+  color: #fff;
+  background-color: #660000;
+  border-color: #660000;
+}
+
+input {
+  font-family: "Montserrat", sans-serif;
+  padding: 0.5em 1em;
+  border: 1px solid rgba(13, 13, 13, 0.2);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 1em;
+  margin-bottom: 10px;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+input:focus {
+  border-color: #660000;
+  box-shadow: 0 0 5px #660000;
+  outline: none;
+}
+
+button {
+  border: 1px solid #000000;
+  padding: 0.8em 1em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin: 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+button:hover,
+.deleteall:hover,
+.deletecompleted:hover {
+  background-color: #e5e5e5;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+input[type="checkbox"] + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+input[type="checkbox"] + label::before {
+  content: "";
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+  transition: all 0.25s ease;
+}
+
+input[type="checkbox"]:not(:disabled):not(:checked) + label:hover::before {
+  border-color: #828282;
+}
+
+input[type="checkbox"]:not(:disabled):active + label::before {
+  background-color: #939393;
+  border-color: #b3d7ff;
+}
+
+input[type="checkbox"]:focus + label::before {
+  box-shadow: none;
+}
+
+input[type="checkbox"]:checked + label::before {
+  border-color: #660000;
+  background-color: #660000;
+}
+
+input[type="checkbox"]:disabled + label::before {
+  background-color: #e9ecef;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.container .deleteall,
+.container .deletecompleted {
+  background-color: rgb(138, 23, 23) !important;
+  color: white !important;
+  border: none !important;
+  padding: 10px 15px !important;
+  cursor: pointer !important;
+  margin: 5px !important;
+  display: inline-block !important;
+}
+
+.confirmation-dialog {
+  background-color: #660000;
+  color: white;
+  padding: 20px;
+  margin: 10px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+}
+
+.confirmation-dialog button {
+  background-color: #e5e5e5;
+  color: #660000;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.confirmation-dialog button:hover {
+  background-color: #d3d3d3;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #000000;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+
+  input {
+    background-color: #f9f9f9;
+    color: #213547;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 5px;
+  }
+}
+@media (max-width: 1024px) {
+  .todo-item {
+    width: 80%;
+    padding: 10px;
+    margin: 0 auto;
+  }
+
+  .todo-actions {
+    right: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .todo-item {
+    width: 90%;
+    padding: 8px;
+  }
+
+  .todo-actions {
+    right: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .todo-item {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .todo-actions {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .todo-item button {
+    margin-left: 0;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .todo-item {
+    padding: 5px;
+  }
+
+  .todo-actions {
+    gap: 5px;
+  }
+
+  .todo-item button {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
