@@ -1,4 +1,4 @@
-# To-Do List Application 🎯
+# To-Do List 
 
 ## Description
 A feature-rich To-Do List application built with React, designed to help users manage and prioritize their tasks effectively. The app allows task addition, filtering, and tracking with built-in priority levels and completion monitoring.
